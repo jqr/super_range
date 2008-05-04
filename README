@@ -1,9 +1,19 @@
 Super Range
 ===========
 
+Allows for open ended ranges.
 
 Examples
 ========
 
-Homepage: http://github.com/insomniapps/super_range/tree/master  
+# single open ended range
+sr = SuperRange.new(1, nil)   # => 1...
+sr.include?(10)               # => true
+sr.include?(0)                # => false
+
+# double open ended range
+sr = SuperRange.new
+sr.include?(123)              # => true
+
+Homepage: http://github.com/jqr/super_range/tree/master  
 Copyright (c) 2008 Elijah Miller <elijah.miller@gmail.com>, released under the MIT license.
