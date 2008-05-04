@@ -74,4 +74,33 @@ describe SuperRange do
       @sr.include?(0).should be_false
     end
   end
+  
+  describe "to_s" do
+    it "should return '...' for an open range" do
+      @sr.to_s.should == '...'
+    end
+
+    it "should return 'X...' for an open ended range" do
+      @sr.start = 'X'
+      @sr.to_s.should == 'X...'
+    end
+    
+    it "should return '...X' for an open started range" do
+      @sr.end = 'X'
+      @sr.to_s.should == '...X'
+    end
+    
+    it "should return 'X..Y' for an enclosed range" do
+      @sr.start = 'X'
+      @sr.end = 'Y'
+      @sr.to_s.should == 'X..Y'
+    end
+  end
+  
+  describe "inspect" do
+    it "should be the same as to_s" do
+      @sr.inspect.should == '...'
+    end
+  end
+  
 end

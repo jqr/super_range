@@ -11,6 +11,24 @@ class SuperRange
   def include?(value)
     after_start?(value) && before_end?(value)
   end
+
+  def to_s
+    if start
+      if self.end
+        "#{start}..#{self.end}"
+      else
+        "#{start}..."
+      end
+    else
+      if self.end
+        "...#{self.end}"
+      else
+        "..."
+      end
+    end
+  end
+  
+  alias :inspect :to_s
   
   private
 
@@ -21,4 +39,5 @@ class SuperRange
   def before_end?(value)
     !self.end || value <= self.end
   end
+  
 end
